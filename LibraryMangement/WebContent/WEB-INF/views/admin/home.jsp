@@ -10,11 +10,12 @@
 	<h2>Admin Dashboard!!</h2>
 
 
-	<form method="get" action="memberController">
+<form method="get" action="memberController">
 
-		Action:<select name="dashboardAction">
+		Action:<select name="action"> 
 			<option></option>
-			<option value="memberDetails">Member</option>
+			
+			<option value="memberDetails" >Member</option> 
 			<option value="bookDetails">Book</option>
 			<option value="transcationDetails">Transaction</option>
 		</select> 

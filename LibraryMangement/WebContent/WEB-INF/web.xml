@@ -12,14 +12,20 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/loginController</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  <servlet-name>MemberController</servlet-name>
-  <servlet-class>com.java.librarymanagement.controller.MemberController</servlet-class>
+    <servlet-name>MemberController</servlet-name>
+    <servlet-class>com.java.librarymanagement.controller.MemberController</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>MemberController</servlet-name>
-  <url-pattern>/memberController</url-pattern>
+    <servlet-name>MemberController</servlet-name>
+    <url-pattern>/memberController</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>ListMemberController</servlet-name>
+    <servlet-class>com.java.librarymanagement.controller.ListMemberController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListMemberController</servlet-name>
+    <url-pattern>/listMemberController</url-pattern>
+  </servlet-mapping>
 </web-app>
