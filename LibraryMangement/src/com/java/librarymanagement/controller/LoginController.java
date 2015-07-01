@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Krishna
@@ -43,11 +44,13 @@ public class LoginController extends HttpServlet {
 
 		//validation for Admin.
 		if (uname.equals("krishna") && pwd.equals("passw0rd")) {
+			 HttpSession session=request.getSession();  
+		        session.setAttribute("username",uname);  
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/admin/home.jsp");
 			rd.forward(request, response);
 		} else {
 			out.print("<p style=\"color:red\">Sorry username or password error</p>");
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/error.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("adminLogin.jsp");
 			rd.include(request, response);
 		}
 

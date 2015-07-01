@@ -10,7 +10,31 @@
 </head>
 <body>
 
-    <table border=1>
+<table>
+		<tr>
+			<td>
+				<form method="get" action="memberController">
+					<button type="submit" value="memberDetails">Member</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="bookController">
+					<button type="submit" value="bookDetails">Book</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="transactionController">
+					<button type="submit" value="transactionDetails">Transaction</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="logoutController">
+					<button type="submit" value="logout">Logout</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+    <table align="left" border="2">
         <thead>
             <tr>
                 <th>User Id</th>
@@ -34,7 +58,8 @@
                 </tr>
             </c:forEach>
         </tbody>
-    </table>
-    <p><a href="listMemberController?action=insert">Add User</a></p>
+    </table> 
+    <p><strong><a href="listMemberController?action=insert">Add User</a></strong></p>
+    
 </body>
 </html>

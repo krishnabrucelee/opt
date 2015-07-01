@@ -16,16 +16,30 @@
 			<option value="bookDetails">Book</option>
 			<option value="transcationDetails">Transaction</option>
 		</select>  -->
-	<form method="get" action="memberController">
-		<button type="submit" value="memberDetails">Member</button>
-	</form>
-	<form method="get" action="bookController">
-		<button type="submit" value="bookDetails">Book</button>
-	</form>
-	<form method="get" action="transactionController">
-		<button type="submit" value="transactionDetails">Transaction</button>
-	</form>
-
+	<table>
+		<tr>
+			<td>
+				<form method="get" action="memberController">
+					<button type="submit" value="memberDetails">Member</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="bookController">
+					<button type="submit" value="bookDetails">Book</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="transactionController">
+					<button type="submit" value="transactionDetails">Transaction</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="logoutController">
+					<button type="submit" value="logout">Logout</button>
+				</form>
+			</td>
+		</tr>
+	</table>
 	<p>
 		Total Books : 4563 <br> Total Members : 1574 <br> Books
 		Lended: 1654 <br>

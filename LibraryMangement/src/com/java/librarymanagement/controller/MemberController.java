@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * @author Krishna 
- * Servlet implementation class MemberController
+ * @author Krishna Servlet implementation class MemberController
  */
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
@@ -31,10 +31,17 @@ public class MemberController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getParameter("action");
-		String forward = "/WEB-INF/views/member/listMember.jsp";
-		RequestDispatcher view = request.getRequestDispatcher(forward);
-		view.forward(request, response);
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			request.getParameter("action");
+			String forward = "/WEB-INF/views/member/listMember.jsp";
+			RequestDispatcher view = request.getRequestDispatcher(forward);
+			view.forward(request, response);
+
+		} else {
+
+			request.getRequestDispatcher("adminLogin.jsp").include(request, response);
+		}
 	}
 
 }

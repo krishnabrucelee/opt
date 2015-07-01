@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author krishna 
@@ -31,10 +32,19 @@ public class BookController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		request.getParameter("action");
 		String forward = "/WEB-INF/views/book/listBook.jsp";
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
+		HttpSession session=request.getSession(false);  
+        if(session!=null){  
+         }  
+        else{  
+            
+            request.getRequestDispatcher("adminLogin.jsp").include(request, response);  
+        }  
+         
 	}
 
 }

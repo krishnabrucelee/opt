@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.java.librarymanagement.model.dao.MemberDao;
 import com.java.librarymanagement.model.entity.MemberEntity;
@@ -45,6 +46,8 @@ public class ListMemberController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session=request.getSession(false);  
+        if(session!=null){  
 		String action = request.getParameter("action");
 		String forward = "";
 		
@@ -74,11 +77,17 @@ public class ListMemberController extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
+		
+	} else {
+
+		request.getRequestDispatcher("adminLogin.jsp").include(request, response);
+	}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		HttpSession session=request.getSession(false);  
+        if(session!=null){  
 		
 		member.setFirstName(request.getParameter("firstName"));
 		member.setLastName(request.getParameter("lastName"));
@@ -105,5 +114,10 @@ public class ListMemberController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(listMember);
 		request.setAttribute("users", dao.getAllMembers());
 		rd.forward(request, response);
+		
+        } else {
+
+			request.getRequestDispatcher("adminLogin.jsp").include(request, response);
+		}
 	}
 }

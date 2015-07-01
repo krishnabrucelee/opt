@@ -13,12 +13,36 @@
 <title>Add new book</title>
 </head>
 <body>
+
     <script>
         $(function() {
             $('input[name=dob]').datepicker();
         });
     </script>
-
+<table>
+		<tr>
+			<td>
+				<form method="get" action="memberController">
+					<button type="submit" value="memberDetails">Member</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="bookController">
+					<button type="submit" value="bookDetails">Book</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="transactionController">
+					<button type="submit" value="transactionDetails">Transaction</button>
+				</form>
+			</td>
+			<td>
+				<form method="get" action="logoutController">
+					<button type="submit" value="logout">Logout</button>
+				</form>
+			</td>
+		</tr>
+	</table>
     <form method="POST" action='listBookController' name="frmAddBook">
         Book ID : <input type="text" readonly="readonly" name="bookid"
             value="<c:out value="${book.bookid}" />" /> <br /> 
