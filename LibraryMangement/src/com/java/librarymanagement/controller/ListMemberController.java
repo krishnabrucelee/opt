@@ -18,20 +18,24 @@ import com.java.librarymanagement.service.MemberService;
 import com.java.librarymanagement.service.MemberServiceImpl;
 
 /**
- * Servlet implementation class MemberController
+ * @author Krishna
+ * Servlet implementation class ListMemberController
  */
 @WebServlet("/ListMemberController")
 public class ListMemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String INSERT_OR_EDIT = "/WEB-INF/views/member/addMember.jsp";
-	private static String LIST_MEMBER = "/WEB-INF/views/member/listMember.jsp";
-	private MemberDao dao;
+	private static String insert_editMember = "/WEB-INF/views/member/addMember.jsp";
+	private static String listMember = "/WEB-INF/views/member/listMember.jsp";
+	
+	MemberEntity member = new MemberEntity();
+	MemberService memberDetails = new MemberServiceImpl();
+	MemberDao dao = new MemberDao();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ListMemberController() {
-		super();
+		super();	
 		// TODO Auto-generated constructor stub
 	}
 
@@ -43,50 +47,63 @@ public class ListMemberController extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		String forward = "";
-
+		
+		
+		// Checks the request from the parameter
 		if (action.equalsIgnoreCase("delete")) {
 			int userId = Integer.parseInt(request.getParameter("userId"));
-			MemberService memberDetails = new MemberServiceImpl();
+
 			memberDetails.getMemberDetails(userId);
-			forward = LIST_MEMBER;
+
+			// It forwards the response to listMember
+			forward = listMember;
 			request.setAttribute("users", dao.getAllMembers());
 		} else if (action.equalsIgnoreCase("edit")) {
-			forward = INSERT_OR_EDIT;
+			forward = insert_editMember;
+
 			int userId = Integer.parseInt(request.getParameter("userId"));
+			
 			MemberEntity member = dao.getUserById(userId);
 			request.setAttribute("user", member);
 		} else if (action.equalsIgnoreCase("listUser")) {
-			forward = LIST_MEMBER;
-			request.setAttribute("users", dao.getAllMembers());
+			forward = listMember;
+			request.setAttribute("users", memberDetails.getAllMemberDetails());
 		} else {
-			forward = INSERT_OR_EDIT;
+			forward = insert_editMember;
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher(forward);
-		view.forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher(forward);
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		MemberEntity member = new MemberEntity();
+
+		
 		member.setFirstName(request.getParameter("firstName"));
 		member.setLastName(request.getParameter("lastName"));
+
 		try {
 			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dob"));
 			member.setDob(dob);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+
 		member.setEmail(request.getParameter("email"));
 		String userid = request.getParameter("userid");
+
 		if (userid == null || userid.isEmpty()) {
-			dao.addUser(member);
+			memberDetails.addMemberDetails(member);
+
 		} else {
-			member.setUserid(Integer.parseInt(userid));
-			dao.updateUser(member);
+			member.setUserid(Integer.parseInt(userid));	
+			memberDetails.updateMemberDetails(member);
+
 		}
-		RequestDispatcher view = request.getRequestDispatcher(LIST_MEMBER);
+
+		RequestDispatcher rd = request.getRequestDispatcher(listMember);
 		request.setAttribute("users", dao.getAllMembers());
-		view.forward(request, response);
+		rd.forward(request, response);
 	}
 }

@@ -28,4 +28,20 @@
     <servlet-name>ListMemberController</servlet-name>
     <url-pattern>/listMemberController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>BookController</servlet-name>
+    <servlet-class>com.java.librarymanagement.controller.BookController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookController</servlet-name>
+    <url-pattern>/bookController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListBookController</servlet-name>
+    <servlet-class>com.java.librarymanagement.controller.ListBookController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListBookController</servlet-name>
+    <url-pattern>/listBookController</url-pattern>
+  </servlet-mapping>
 </web-app>

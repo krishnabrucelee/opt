@@ -6,8 +6,8 @@ package com.java.librarymanagement.model.entity;
 import java.util.Date;
 
 /**
- * @author Assistanz
- *
+ * @author Krishna
+ * Entity Class for Member 
  */
 public class MemberEntity {
 

@@ -8,9 +8,9 @@
 </head>
 <body>
 	<form action="loginController" method="post">
-		Username:<input type="text" name="username" /><br />
-		<br /> Password:<input type="password" name="password" /><br />
-		<br /> <input type="submit" value="login" />
+		Username:<input type="text" name="username" /><br /> <br />
+		Password:<input type="password" name="password" /><br /> <br /> <input
+			type="submit" value="login" />
 	</form>
 </body>
 </html>

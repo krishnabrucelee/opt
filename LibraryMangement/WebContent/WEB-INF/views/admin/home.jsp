@@ -9,27 +9,28 @@
 <body>
 	<h2>Admin Dashboard!!</h2>
 
-
-<form method="get" action="memberController">
-
-		Action:<select name="action"> 
+	<!-- Action:<select name="action"> 
 			<option></option>
 			
 			<option value="memberDetails" >Member</option> 
 			<option value="bookDetails">Book</option>
 			<option value="transcationDetails">Transaction</option>
-		</select> 
-		
-		<input type="submit" value="Submit" /> 
-		
+		</select>  -->
+	<form method="get" action="memberController">
+		<button type="submit" value="memberDetails">Member</button>
 	</form>
-<p>Total Books : 4563 <br>
- 
-Total Members : 1574 <br>
- 
-Books Lended: 1654 <br>
-  
-</p>
+	<form method="get" action="bookController">
+		<button type="submit" value="bookDetails">Book</button>
+	</form>
+	<form method="get" action="transactionController">
+		<button type="submit" value="transactionDetails">Transaction</button>
+	</form>
+
+	<p>
+		Total Books : 4563 <br> Total Members : 1574 <br> Books
+		Lended: 1654 <br>
+
+	</p>
 	<!-- HTML Code -->
 	<table class="GeneratedTable" border="1">
 		<thead>
@@ -62,7 +63,7 @@ Books Lended: 1654 <br>
 				<td>6</td>
 				<td>6</td>
 			</tr>
-			
+
 		</tbody>
 	</table>
 

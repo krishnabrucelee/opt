@@ -15,7 +15,7 @@ import com.java.librarymanagement.model.entity.MemberEntity;
 import com.java.librarymanagement.utils.DbUtil;
 
 /**
- * @author Assistanz
+ * @author Krishna
  *
  */
 public class MemberDao {
@@ -96,7 +96,7 @@ public class MemberDao {
 		return members;
 	}
 
-	//List by MemberId
+	// List by MemberId
 	public MemberEntity getUserById(int userId) {
 		MemberEntity member = new MemberEntity();
 		try {
